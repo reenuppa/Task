@@ -1,0 +1,57 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const OrderForm = () => {
+  const [garmentType, setGarmentType] = useState('');
+  const [fabricPreferences, setFabricPreferences] = useState('');
+  const [deliveryDate, setDeliveryDate] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('/api/orders', {
+        garmentType,
+        fabricPreferences,
+        deliveryDate,
+      });
+      console.log(response.data); // Do something with the response
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Garment Type:
+        <input
+          type="text"
+          value={garmentType}
+          onChange={(e) => setGarmentType(e.target.value)}
+        />
+      </label>
+      <label>
+        Fabric Preferences:
+        <input
+          type="text"
+          value={fabricPreferences}
+          onChange={(e) => setFabricPreferences(e.target.value)}
+        />
+      </label>
+      <label>
+        Delivery Date:
+        <input
+          type="date"
+          value={deliveryDate}
+          onChange={(e) => setDeliveryDate(e.target.value)}
+        />
+      </label>
+      <button type="submit">Submit</button>
+    </form>
+  );
+};
+
+export default OrderForm;
+
+
+In this example, the order form component uses the useState hook to manage the state of the form data. When the form is submitted, the component sends a POST request to the /api/orders endpoint using the axios HTTP client library.

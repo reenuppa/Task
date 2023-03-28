@@ -1,0 +1,16 @@
+import React from 'react';
+
+const QuoteDetails = ({ quote }) => {
+  return (
+    <div>
+      <h3>Quote Details</h3>
+      <p>Price: {quote.price}</p>
+      <p>Description: {quote.description}</p>
+    </div>
+  );
+};
+
+export default QuoteDetails;
+In this example, the quote details component receives the quote data as a prop and displays the relevant information for the quote. This component could be used to display quote details when a user selects a quote from the job details page.
+
+Note that these examples assume that you have set up a back-end API using a framework like Adonis.js and that you have defined the necessary endpoints for creating quotes and retrieving quote details. The components also assume that you have configured routing using a library like React Router to navigate between different pages in the application.
